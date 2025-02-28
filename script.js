@@ -27,10 +27,24 @@ tasks.forEach((task, index) => {
     li.classList.add(
         'list-group-item', 'd-flex', 'justify-content-between', 'align-items-center'
     )
-
 li.innerHTML = `${task} <button class='btn btn-dark btn-sm' onclick='removeTask(${index})'> √ </button> `
 //append the new task to the task list
 taskList.appendChild(li)
-
 })
 }                                                   
+//Function to remove a task from the list when the √ button is clicked
+function removeTask(index){
+    tasks.splice(index, 1)
+    //Call the function to update the task list display
+    displayTasks()
+}
+//Event listener for the clear all tasks button
+document.getElementById('clearTaskBtn').addEventListener('click', function(){
+ //Empty the tasks array to remove all tasks
+ tasks = []
+ //Call the function to update the task list display
+  displayTasks()
+})
+
+
+
