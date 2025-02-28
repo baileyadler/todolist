@@ -1,0 +1,12 @@
+body{
+    background-color: blanchedalmond;
+    font-family: "ivypresto-display", serif;
+font-weight: 400;
+font-style: normal;
+}
+.form-control{
+    color:black;
+}
+.btn {
+    background-color: rgb(79, 173, 235);
+}
