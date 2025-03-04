@@ -12,7 +12,7 @@ document.getElementById('addTaskButton').addEventListener('click', function(){
         //call the function to update the task list display
         displayTasks()
     }
-})
+});
 //function to display all my tasks in a list
 function displayTasks() {
     //select the unordered list (taskList) in the html
@@ -29,8 +29,10 @@ tasks.forEach((task, index) => {
     )
 li.innerHTML = `${task} <button class='btn btn-dark btn-sm' onclick='removeTask(${index})'> √ </button> `
 //append the new task to the task list
-taskList.appendChild(li)
-})
+taskList.appendChild(li);
+});
+//keep track of task number
+updateTaskCounter();
 }                                                   
 //Function to remove a task from the list when the √ button is clicked
 function removeTask(index){
@@ -45,6 +47,19 @@ document.getElementById('clearTaskBtn').addEventListener('click', function(){
  //Call the function to update the task list display
   displayTasks()
 })
-
-
-
+//add tasks with enter key
+ document.getElementById('taskInput').addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+       let taskInput = document.getElementById('taskInput').value;
+       if (taskInput) {
+        tasks.push(taskInput);
+      document.getElementById('taskInput').value= '';
+      displayTasks();
+       }
+    }
+});
+//update number of tasks
+function updateTaskCounter(){
+    let taskCounter = document.getElementById('updateTaskCounter');
+    taskCounter.textContent = `Number of Tasks: ${tasks.length}`;
+}
